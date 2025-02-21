@@ -24,7 +24,13 @@ namespace Exercises
         public static float? AverageSnowFall(SnowFallData snowFallData)
         {
             //TODO your code goes here
-            throw new NotImplementedException();
+            if (snowFallData == null 
+             || snowFallData.MonthlySnowFallDataItems == null
+             || snowFallData.MonthlySnowFallDataItems.Count() != 12) 
+                return null;
+
+			return snowFallData.MonthlySnowFallDataItems.Average(monthltData => monthltData.SnowfallInCentimeters);
+
         }
 
         //Coding Exercise 2
@@ -49,7 +55,12 @@ namespace Exercises
         public static double MaxAverageOfMarks(IEnumerable<Student> students)
         {
             //TODO your code goes here
-            throw new NotImplementedException();
+            if (!students.Any())
+                return 0;
+            return students.Max(student => {
+                if (!student.Marks.Any()) return 0;
+                return student.Marks.Average();
+            });
         }
 
         //Refactoring challenge
@@ -58,7 +69,8 @@ namespace Exercises
             List<float?> heights, float defaultIfNull)
         {
             //TODO your code goes here
-            throw new NotImplementedException();
+            if (heights == null || !heights.Any()) return 0;
+            return heights.Average(h => h ?? defaultIfNull);
         }
 
         //do not modify this method

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Tracing;
 using System.Linq;
 
 namespace Exercises
@@ -12,7 +13,7 @@ namespace Exercises
         public static int CountAllLongWords(IEnumerable<string> words)
         {
             //TODO your code goes here
-            throw new NotImplementedException();
+            return words.Count(word => word.Length > 10);
         }
 
         //Coding Exercise 2
@@ -30,8 +31,11 @@ namespace Exercises
          */
         public static bool AreThereFewerOddThanEvenNumbers(IEnumerable<int> numbers)
         {
-            //TODO your code goes here
-            throw new NotImplementedException();
+			//TODO your code goes here
+			var oddCount = numbers.Count(n => n % 2 != 0);
+			var evenCount = numbers.Count(n => n % 2 == 0);
+
+			return oddCount < evenCount;
         }
 
         //Refactoring challenge
@@ -39,7 +43,7 @@ namespace Exercises
         public static bool IsAnySequenceTooLong_Refactored(IEnumerable<IEnumerable<int>> numberSequences, int maxLength)
         {
             //TODO your code goes here
-            throw new NotImplementedException();
+            return numberSequences.Any(sequence => sequence.Count() > maxLength);
         }
 
         //do not modify this method
